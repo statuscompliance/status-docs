@@ -1,0 +1,16 @@
+---
+sidebar_position: 1
+---
+
+# Intro
+
+<div class="justified-text">
+Due to the handling of confidential information and the processing of personal data, organisations are obliged to follow complex standards such as ISO (International Organization for Standardization) or HIPAA (Health Insurance Portability and Accountability Act). Verifying compliance with these standards can be challenging for organisations, especially in processes that do not follow a clear business process model. For example, applying for and obtaining municipal licenses for new business start-ups, where the diversity of requirements, coordination between entities and variability by location present significant modelling challenges. Effective coordination between teams within the same organisation is essential to ensure that business processes comply with established standards and to avoid potential compliance gaps that could result in legal sanctions or damage to the organisation's reputation.
+
+Another scenario in which organisations may need business process compliance management systems is to ensure compliance with the organisation's internal policies. These policies can cover a wide range of areas, such as information security, employee and customer privacy protection, risk management, internal control, among other key aspects for the proper and ethical operation of the company.
+
+In line with the importance of ensuring compliance in business processes, several studies and articles have addressed the different verification phases within the lifecycle of these processes. In particular, much of this information is detailed in the article ["A Mashup-Based Framework for Business Process Compliance Checking"](https://ieeexplore.ieee.org/abstract/document/9113467?casa_token=Xv8Xs2WmdB8AAAAA:IyzPCRYkweCNtlO_q86EjSZAj5feB4PLnx_W6yxzQMTtrUq_nuI4mXQlUl4r76AA2UDtFe7Nig) written by Cristina Cabanillas (2020), which will serve as the main basis for the system development. This article defines a framework based on _mashups_ for forward compliance checking of business processes. These _mashups_ are workflows based on data from different sources that aim to specify rules and perform compliance checks of business processes at design and runtime. In this context, the terms _Design-Time Compliance Checking_ (DTCC) and _Run-Time Compliance Checking_ (RTCC) are commonly used to refer to these practices.
+
+Business processes are subjected to a series of controls, consisting of sets of rules or conditions that must be followed to verify compliance, which are assessed through _compliance mashups_. To illustrate how a _mashup_ could be useful to verify a specific control in the context of business processes, consider the following example: "Within Software Projects, one of the critical controls is that the functional analysis must be approved by the Business Sponsor". From these compliance checks based on _mashups_ (MCC), a business process compliance management system (BPCMS) was built for an IT department of a multinational company in the energy supply field as an R&D project, this project was called "Procede". In this project, a number of generic components were designed and used to form _compliance mashups_.
+
+</div>
