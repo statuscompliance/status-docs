@@ -78,7 +78,7 @@ const config = {
             type: "docSidebar",
             sidebarId: "documentationSidebar",
             position: "left",
-            label: "Documentation",
+            label: "Docs",
           },
           {
             href: "https://github.com/statuscompliance/status-docs",
