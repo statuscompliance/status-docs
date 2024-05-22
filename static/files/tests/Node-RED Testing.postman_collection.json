@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "317d315e-99f6-40e1-a01e-55da0f734383",
+		"name": "Node-RED Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20295563"
+	},
+	"item": [
+		{
+			"name": "Login Parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - type and prompts\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData).to.include.all.keys('type', 'prompts');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type header is application/json\", function () {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1880/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1880",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is within acceptable range\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - access_token, expires_in, and token_type\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.access_token).to.exist;",
+							"    pm.expect(responseData.expires_in).to.exist;",
+							"    pm.expect(responseData.token_type).to.exist;",
+							"",
+							"    pm.collectionVariables.set(\"access_token\",responseData.access_token);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Access token is a non-empty string\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData.access_token).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Access token should not be empty\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Expires in is a non-negative integer\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.expires_in).to.be.a('number').and.to.satisfy((value) => value >= 0, \"Expires in must be a non-negative integer\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"client_id\": \"node-red-admin\",\n    \"grant_type\": \"password\",\n    \"scope\": \"*\",\n    \"username\": {{username}},\n    \"password\": {{password}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1880/auth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1880",
+					"path": [
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get flows",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Id, type, label, and info fields exist in the response\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData).to.be.an('array');",
+							"  responseData.forEach(item => {",
+							"    pm.expect(item).to.have.property('id');",
+							"    pm.expect(item).to.have.property('type');",
+							"  });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Ensure the Content-Type is application/json\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response is an array with at least one element\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1880/flows",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1880",
+					"path": [
+						"flows"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create flow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is within an acceptable range\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"  pm.collectionVariables.set(\"nodeId\", pm.response.json().id);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.id).to.exist;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Id is a non-empty string\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should not be empty\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type header is application/json\", function () {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"{{$randomAlphaNumeric}}\",\n    \"label\": \"{{$randomCommonFileName}}\",\n    \"nodes\": [\n        {\n            \"id\":\"{{$randomAlphaNumeric}}\",\n            \"type\":\"http in\",\n            \"z\":\"{{$randomAlphaNumeric}}\",\n            \"name\":\"\",\n            \"url\":\"/mashupTest\",\n            \"method\":\"get\",\n            \"upload\":false,\n            \"swaggerDoc\":\"\",\n            \"x\":420,\n            \"y\":440,\n            \"wires\":[\n                [\n                ]\n            ]\n        }\n    ],\n    \"configs\": [ ],\n    \"info\": \"{{$randomJobDescriptor}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1880/flow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1880",
+					"path": [
+						"flow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete flow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 204\", function () {",
+							"    pm.expect(pm.response.code).to.equal(204);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is within an acceptable range\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1880/flow/{{nodeId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1880",
+					"path": [
+						"flow",
+						"{{nodeId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": "\"alvber\"",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "\"a\"",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "nodeId",
+			"value": ""
+		}
+	]
+}

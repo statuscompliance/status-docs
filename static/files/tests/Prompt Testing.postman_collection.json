@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "df624e5e-60c9-400e-8c3e-b0c698345646",
+		"name": "Prompt Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20295563"
+	},
+	"item": [
+		{
+			"name": "Sign In",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Sign In test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.username).to.eql(\"alvber\");",
+							"    pm.expect(jsonData.accessToken.exist);",
+							"    pm.expect(jsonData.refreshToken.exist);",
+							"    pm.collectionVariables.set(\"accessToken\", jsonData.accessToken);",
+							"    pm.collectionVariables.set(\"refreshToken\", jsonData.refreshToken);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"alvber\",\n    \"password\": \"a\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/user/signIn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"user",
+						"signIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assistant",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"    var jsonData = pm.response.json();",
+							"    var lastAssistant = jsonData.length -1;",
+							"    var assistant = jsonData[lastAssistant];",
+							"    pm.collectionVariables.set(\"assistantId\", assistant.id);",
+							"    pm.collectionVariables.set(\"assistantGPTId\", assistant.assistantId);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type header is application/json\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/assistant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"assistant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Thread",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 201\", function () {",
+							"    pm.expect(pm.response.code).to.equal(201);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - id and message\", function () {",
+							"  const responseData = pm.response.json();",
+							"    pm.collectionVariables.set(\"threadId\", responseData.id);",
+							"",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData).to.have.property('id');",
+							"  pm.expect(responseData).to.have.property('message');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Message is a non-empty string\", function () {",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(2500);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type header is application/json\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"assistantId\": \"{{assistantGPTId}}\",\n    \"content\": \"Given a filter criteria, check if a section exists within the GitHub repository documents associated with cards on a trello board.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/thread",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"thread"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Thread Messages",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Options object must exist and be an object\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData.options).to.exist;",
+							"    pm.expect(responseData.options).to.be.an('object');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Validate the response object in the body\", function () {",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData).to.have.property('options');",
+							"    pm.expect(responseData).to.have.property('response');",
+							"    pm.expect(responseData).to.have.property('body');",
+							"    pm.expect(responseData).to.have.property('data');",
+							"});",
+							"",
+							"pm.test(\"Check prompt quality > 50%\", function () {",
+							"    const answer = pm.response.json().body.data[0].content[0].text.value;",
+							"    const stringsToCheck = [\"json\", \"http in\", \"exists-section-in-doc\", \"http response\", \"filter-by\", \"trello-collector\"];",
+							"",
+							"    pm.collectionVariables.set(\"answer\", answer);",
+							"",
+							"    let count = 0;",
+							"    stringsToCheck.forEach(str => {",
+							"        if (answer.includes(str)) {",
+							"            count++;",
+							"        }",
+							"    });",
+							"    ",
+							"    pm.expect(count).to.be.at.least(3);",
+							"});",
+							"",
+							"pm.test(\"Check prompt quality > 67%\", function () {",
+							"    const answer = pm.response.json().body.data[0].content[0].text.value;",
+							"    const stringsToCheck = [\"json\", \"http in\", \"exists-section-in-doc\", \"http response\", \"filter-by\", \"trello-collector\"];",
+							"",
+							"    pm.collectionVariables.set(\"answer\", answer);",
+							"",
+							"    let count = 0;",
+							"    stringsToCheck.forEach(str => {",
+							"        if (answer.includes(str)) {",
+							"            count++;",
+							"        }",
+							"    });",
+							"    ",
+							"    pm.expect(count).to.be.at.least(4);",
+							"});",
+							"",
+							"pm.test(\"Check prompt quality > 83%\", function () {",
+							"    const answer = pm.response.json().body.data[0].content[0].text.value;",
+							"    const stringsToCheck = [\"json\", \"http in\", \"exists-section-in-doc\", \"http response\", \"filter-by\", \"trello-collector\"];",
+							"",
+							"    pm.collectionVariables.set(\"answer\", answer);",
+							"",
+							"    let count = 0;",
+							"    stringsToCheck.forEach(str => {",
+							"        if (answer.includes(str)) {",
+							"            count++;",
+							"        }",
+							"    });",
+							"    ",
+							"    pm.expect(count).to.be.at.least(5);",
+							"});",
+							"",
+							"pm.test(\"Check prompt quality = 100%\", function () {",
+							"    const answer = pm.response.json().body.data[0].content[0].text.value;",
+							"    const stringsToCheck = [\"json\", \"http in\", \"exists-section-in-doc\", \"http response\", \"filter-by\", \"trello-collector\"];",
+							"",
+							"    pm.collectionVariables.set(\"answer\", answer);",
+							"",
+							"    let count = 0;",
+							"    stringsToCheck.forEach(str => {",
+							"        if (answer.includes(str)) {",
+							"            count++;",
+							"        }",
+							"    });",
+							"    ",
+							"    pm.expect(count).to.be.at.least(6);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/thread/{{threadId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"thread",
+						"{{threadId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "accessToken",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		},
+		{
+			"key": "assistantId",
+			"value": ""
+		},
+		{
+			"key": "threadId",
+			"value": ""
+		},
+		{
+			"key": "answer",
+			"value": ""
+		},
+		{
+			"key": "assistantGPTId",
+			"value": ""
+		}
+	]
+}
