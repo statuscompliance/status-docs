@@ -32,15 +32,15 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "es"],
-    localeConfigs: {
-      en: {
-        label: "English",
-      },
-      es: {
-        label: "Español",
-      },
-    },
+    locales: ["en"],
+    //   localeConfigs: {
+    //     en: {
+    //       label: "English",
+    //     },
+    //     es: {
+    //       label: "Español",
+    //     },
+    //   },
   },
 
   presets: [
@@ -85,10 +85,10 @@ const config = {
             label: "GitHub",
             position: "right",
           },
-          {
-            type: "localeDropdown",
-            position: "right",
-          },
+          // {
+          //   type: "localeDropdown",
+          //   position: "right",
+          // },
         ],
       },
       footer: {
@@ -98,21 +98,8 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Docs",
                 to: "/docs/intro",
-              },
-            ],
-          },
-          {
-            title: "More",
-            items: [
-              {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/statuscompliance/status-docs",
               },
             ],
           },
