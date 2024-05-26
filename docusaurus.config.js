@@ -46,7 +46,7 @@ const config = {
   presets: [
     [
       "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
+      /** @type {import('@docusaurus/theme-search-algolia')} */
       ({
         docs: {
           sidebarPath: "./sidebars.js",
@@ -67,6 +67,33 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
+      algolia: {
+        // The application ID provided by Algolia
+        appId: "KZOV34SWVE",
+
+        // Public API key: it is safe to commit it
+        apiKey: "efe15fcdb3c1b5f6ec171cc4f447a5dc",
+
+        indexName: "status-docs",
+
+        // Optional: see doc section below
+        contextualSearch: true,
+
+        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+        replaceSearchResultPathname: {
+          from: "/docs/", // or as RegExp: /\/docs\//
+          to: "/",
+        },
+
+        // Optional: Algolia search parameters
+        searchParameters: {},
+
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: "search",
+
+        // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+        insights: false,
+      },
       navbar: {
         title: "STATUS documentation",
         logo: {
