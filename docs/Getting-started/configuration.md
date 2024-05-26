@@ -8,6 +8,10 @@ Currently, the system is intended to be tested by system **administrators**. In 
 
 1. **Access the Documentation:**
    Go to `http://localhost:3001/docs` and register as a user using the Sign Up endpoint.
+   <p align="center">
+   <img src="\img\swagger.png" alt="portada" width="80%" height="80%"/>
+   Figure 1. API Documentation
+   </p>
 
 2. **Check Registered Users:**
    Retrieve your username and encrypted password from the list of registered users.
