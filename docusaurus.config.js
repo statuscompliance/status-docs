@@ -69,10 +69,10 @@ const config = {
       image: "img/docusaurus-social-card.jpg",
       algolia: {
         // The application ID provided by Algolia
-        appId: "KZOV34SWVE",
+        appId: "IRCSUYDW4I",
 
         // Public API key: it is safe to commit it
-        apiKey: "efe15fcdb3c1b5f6ec171cc4f447a5dc",
+        apiKey: "41804a1989fa48f178daac93749cdac2",
 
         indexName: "status-docs",
 
