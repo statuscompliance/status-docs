@@ -32,15 +32,15 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
-    //   localeConfigs: {
-    //     en: {
-    //       label: "English",
-    //     },
-    //     es: {
-    //       label: "Español",
-    //     },
-    //   },
+    locales: ["en", "es"],
+    localeConfigs: {
+      en: {
+        label: "English",
+      },
+      es: {
+        label: "Español",
+      },
+    },
   },
 
   presets: [
@@ -69,12 +69,12 @@ const config = {
       image: "img/docusaurus-social-card.jpg",
       algolia: {
         // The application ID provided by Algolia
-        appId: "IRCSUYDW4I",
+        appId: "IJZ96449HV",
 
         // Public API key: it is safe to commit it
-        apiKey: "41804a1989fa48f178daac93749cdac2",
+        apiKey: "08a7dc6df33b999f50361c3195df38de",
 
-        indexName: "status-docs",
+        indexName: "status-netlify",
 
         // Optional: see doc section below
         contextualSearch: true,
@@ -112,10 +112,10 @@ const config = {
             label: "GitHub",
             position: "right",
           },
-          // {
-          //   type: "localeDropdown",
-          //   position: "right",
-          // },
+          {
+            type: "localeDropdown",
+            position: "right",
+          },
         ],
       },
       footer: {

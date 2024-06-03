@@ -6,22 +6,27 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
 import Heading from "@theme/Heading";
 import styles from "./index.module.css";
+import Translate from "@docusaurus/Translate";
 
 function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          <Translate>STATUS documentation</Translate>
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">
+          <Translate>
+            Explore a business process compliance management system for your
+            organization
+          </Translate>
+        </p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro"
           >
-            Find out more
+            <Translate>Find out more</Translate>
           </Link>
         </div>
       </div>

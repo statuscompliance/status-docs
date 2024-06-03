@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Siguiente",
+    "description": "The label for version current"
+  },
+  "sidebar.documentationSidebar.category.🔧 DEVELOPMENT": {
+    "message": "🔧 DESARROLLO",
+    "description": "The label for category 🔧 DEVELOPMENT in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Getting Started": {
+    "message": "Primeros Pasos",
+    "description": "The label for category Getting Started in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Tooling": {
+    "message": "Heramientas",
+    "description": "The label for category Tooling in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.📖 ABOUT": {
+    "message": "📖 SOBRE STATUS",
+    "description": "The label for category 📖 ABOUT in sidebar documentationSidebar"
+  }
+}

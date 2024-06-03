@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import NodeRedImg from "@site/static/img/nodeRED.png";
 import Grafana from "@site/static/img/grafana.png";
 import Bluejay from "@site/static/img/bluejay.png";
+import Translate from "@docusaurus/Translate";
 
 const FeatureList = [
   {
@@ -11,8 +12,10 @@ const FeatureList = [
     Img: NodeRedImg,
     description: (
       <>
-        Our system integrates the Node-RED tool to collect information from
-        different data to be analysed.
+        <Translate>
+          Our system integrates the Node-RED tool to collect information from
+          different data to be analysed.
+        </Translate>
       </>
     ),
   },
@@ -21,8 +24,10 @@ const FeatureList = [
     Img: Bluejay,
     description: (
       <>
-        Using bluejay, we process the analysed information and compliance
-        statistics are generated.
+        <Translate>
+          Using bluejay, we process the analysed information and compliance
+          statistics are generated.
+        </Translate>
       </>
     ),
   },
@@ -31,9 +36,11 @@ const FeatureList = [
     Img: Grafana,
     description: (
       <>
-        Once the catalogue of business process compliance controls has been
-        created, we use Grafana to generate useful charts for agile compliance
-        management.
+        <Translate>
+          Once the catalogue of business process compliance controls has been
+          created, we use Grafana to generate useful charts for agile compliance
+          management.
+        </Translate>
       </>
     ),
   },
