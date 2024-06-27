@@ -12,8 +12,6 @@ Before starting with the installation it is necessary to install the following t
 
 - Docker: You can find the installation guide for your operating system [here](https://docs.docker.com/get-docker/).
 
-- Docker-compose: You can find the installation guide for your operating system [here](https://docs.docker.com/compose/install/).
-
 :::info
 This installation includes a `.env.deploy` file that must be partially filled in by the user. In order to use the application correctly, you must enter this .env:
 
