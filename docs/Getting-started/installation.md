@@ -55,13 +55,7 @@ This installation includes a `.env.deploy` file that must be partially filled in
    cd infraestructure
    ```
 
-4. Grant execution permissions to the `setup.sh` script:
-
-   ```bash
-   chmod +x setup.sh
-   ```
-
-5. Run the setup script:
+4. Run the setup script:
    ```bash
    ./setup.sh
    ```
