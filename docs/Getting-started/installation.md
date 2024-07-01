@@ -8,11 +8,9 @@ STATUS is in a pre-production version, so the infrastructure setup is currently 
 
 ### Installation prerequisites
 
-Before starting with the installation it is necessary to install the following tools:
+Before starting with the installation it is necessary to install (or upgrade if the Docker version is less than 1.27.0) the following tools:
 
 - Docker: You can find the installation guide for your operating system [here](https://docs.docker.com/get-docker/).
-
-- Docker-compose: You can find the installation guide for your operating system [here](https://docs.docker.com/compose/install/).
 
 :::info
 This installation includes a `.env.deploy` file that must be partially filled in by the user. In order to use the application correctly, you must enter this .env:

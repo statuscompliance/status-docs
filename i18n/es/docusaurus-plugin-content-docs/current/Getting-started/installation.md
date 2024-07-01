@@ -8,11 +8,9 @@ STATUS se encuentra en una versión de preproducción, por lo que la configuraci
 
 ### Requisitos previos para la instalación
 
-Antes de comenzar con la instalación es necesario instalar las siguientes herramientas:
+Antes de comenzar con la instalación es necesario instalar y (o actualizar si la versión de Docker es inferior a la 1.27.0) las siguientes herramientas:
 
 - Docker: Puedes encontrar la guía de instalación para tu sistema operativo [aquí](https://docs.docker.com/get-docker/).
-
-- Docker-compose: Puede encontrar la guía de instalación para su sistema operativo [aquí](https://docs.docker.com/compose/install/).
 
 :::info
 Esta instalación incluye un fichero `.env.deploy` que debe ser rellenado parcialmente por el usuario. Para poder utilizar la aplicación correctamente, es necesario introducir este archivo .env:
