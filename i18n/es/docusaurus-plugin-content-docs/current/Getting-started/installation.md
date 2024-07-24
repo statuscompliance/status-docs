@@ -28,11 +28,11 @@ Esta instalación incluye un fichero `.env.deploy` que debe ser rellenado parcia
 
 2. Clona el repositorio de GitHub con el siguiente comando:
    ```bash
-   git clone https://github.com/statuscompliance/infraestructure
+   git clone https://github.com/statuscompliance/infrastructure
    ```
-3. Busca la carpeta `infraestructure` o ejecuta:
+3. Busca la carpeta `infrastructure` o ejecuta:
    ```bash
-   cd .\infraestructure\Windows\
+   cd .\infrastructure\Windows\
    ```
 4. Ejecuta el script de instalación:
    ```bash
@@ -48,13 +48,13 @@ Esta instalación incluye un fichero `.env.deploy` que debe ser rellenado parcia
 2. Clona el repositorio de GitHub ejecutando el siguiente comando:
 
    ```bash
-   git clone https://github.com/statuscompliance/infraestructure
+   git clone https://github.com/statuscompliance/infrastructure
    ```
 
 3. Cambia al directorio recién clonado:
 
    ```bash
-   cd infraestructure
+   cd infrastructure
    ```
 
 4. Ejecuta el script setup:
