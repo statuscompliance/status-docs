@@ -6,6 +6,8 @@ Once the system has been installed and the environment variables have been added
 Currently, the system is intended to be tested by system **administrators**. In future versions, usage will be extended to other roles.
 :::
 
+**The following steps are only necessary if you want to add new users**
+
 1. **Access the Documentation:**
    Go to `http://localhost:3001/docs` and register as a user using the Sign Up endpoint.
    <p align="center">

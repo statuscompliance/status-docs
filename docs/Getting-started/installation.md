@@ -3,7 +3,7 @@
 ## ⚙ Running STATUS locally with Docker
 
 :::caution
-STATUS is in a pre-production version, so the infrastructure setup is currently being used for testing AI mashup generation and description.
+STATUS is in a pre-production version, so it is normal that some parts of the system contain bugs, if you find any, please report them [here](https://github.com/orgs/statuscompliance/discussions/new?category=bugs).
 :::
 
 ### Installation prerequisites
@@ -18,11 +18,13 @@ This installation includes a `.env.deploy` file that must be partially filled in
 - OpenAI API Key
 - OpenAI OrgID
 - Github Client Secret
-  :::
+
+**If you don't have this information, don't worry, you will be able to use a part of the system.**
+:::
 
 ### Installation Guide for Windows
 
-1. Open Git Bash or your preferred terminal on Windows.
+1. Open the Windows Powershell.
 
 2. Clone the GitHub repository with the following command:
    ```bash
@@ -30,12 +32,14 @@ This installation includes a `.env.deploy` file that must be partially filled in
    ```
 3. Find the `infraestructure` folder or execute:
    ```bash
-   cd .\infraestructure\
+   cd .\infraestructure\Windows\
    ```
 4. Run the setup script:
    ```bash
-   .\setup.bat
+   .\setup.ps1
    ```
+5. Enter the requested information (username, password and e-mail address to be used in the system).
+6. After the installation is complete, you can access the system at `http://localhost:3000`.
 
 ### Installation Guide for MacOS/Linux
 
@@ -57,3 +61,5 @@ This installation includes a `.env.deploy` file that must be partially filled in
    ```bash
    ./setup.sh
    ```
+5. Enter the requested information (username, password and e-mail address to be used in the system).
+6. After the installation is complete, you can access the system at `http://localhost:3000`.

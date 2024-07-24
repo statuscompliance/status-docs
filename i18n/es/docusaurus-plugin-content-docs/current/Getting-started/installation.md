@@ -3,7 +3,7 @@
 ## ⚙ Desplegando STATUS localmente con Docker.
 
 :::caution
-STATUS se encuentra en una versión de preproducción, por lo que la configuración de la infraestructura se está utilizando actualmente para probar la generación y descripción de mashups de IA.
+STATUS se encuentra en una versión de preproducción, por lo es normal que algunas partes del sistema contengan errores, si encuentras alguno, por favor repórtalo [aquí](https://github.com/orgs/statuscompliance/discussions/new?category=bugs).
 :::
 
 ### Requisitos previos para la instalación
@@ -18,7 +18,9 @@ Esta instalación incluye un fichero `.env.deploy` que debe ser rellenado parcia
 - Clave API OpenAI
 - OrgID de OpenAI
 - Github Client Secret
-  :::
+
+**Si no tienes esta información, no te preocupes, podrás utilizar una parte del sistema.**
+:::
 
 ### Guía de instalación para Windows
 
@@ -30,12 +32,14 @@ Esta instalación incluye un fichero `.env.deploy` que debe ser rellenado parcia
    ```
 3. Busca la carpeta `infraestructure` o ejecuta:
    ```bash
-   cd .\infraestructure
+   cd .\infraestructure\Windows\
    ```
 4. Ejecuta el script de instalación:
    ```bash
-   .\setup.bat
+   .\setup.ps1
    ```
+5. Introduce la información solicitada (nombre de usuario, contraseña y dirección de correo electrónico que se utilizará en el sistema).
+6. Después de que la instalación esté completa, puedes acceder al sistema en `http://localhost:3000`.
 
 ### Guía de instalación para MacOS/Linux
 
@@ -53,13 +57,9 @@ Esta instalación incluye un fichero `.env.deploy` que debe ser rellenado parcia
    cd infraestructure
    ```
 
-4. Concede permisos de ejecución al script `setup.sh`:
-
-   ```bash
-   chmod +x setup.sh
-   ```
-
-5. Ejecuta el script setup:
+4. Ejecuta el script setup:
    ```bash
    ./setup.sh
    ```
+5. Introduce la información solicitada (nombre de usuario, contraseña y dirección de correo electrónico que se utilizará en el sistema).
+6. Después de que la instalación esté completa, puedes acceder al sistema en `http://localhost:3000`.
