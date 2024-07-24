@@ -6,6 +6,8 @@ Una vez instalado el sistema y añadidas las variables de entorno al fichero `.e
 Actualmente, el sistema está pensado para ser probado por **administradores** del sistema. En futuras versiones, el uso se extenderá a otros roles.
 :::
 
+**Los siguientes pasos solo son necesarios si deseas añadir nuevos usuarios**
+
 1. **Acceder a la documentación:**
    Vaya a `http://localhost:3001/docs` y regístrese como usuario utilizando el endpoint Sign Up.
    <p align="center">
