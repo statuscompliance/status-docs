@@ -1,3 +1,19 @@
+---
+sidebar_position: 1
+tags:
+  - herramientas
+  - integraciones
+  - automatización-flujos
+keywords:
+  - Node-RED
+  - herramientas
+  - configuración
+  - flujos de trabajo
+  - automatización
+  - integraciones
+  - configuración
+---
+
 # Node-RED
 
 Node-RED es una plataforma de programación visual basada en Node.js que permite a los usuarios conectar dispositivos y servicios web de forma intuitiva a través de flujos de trabajo gráficos, facilitando la creación de aplicaciones IoT (Internet of Things) y de automatización. En el proyecto de investigación se utilizará para diseñar mashups capaces de medir el cumplimiento de la normativa.
@@ -22,5 +38,3 @@ A continuación se describe el funcionamiento de cada uno de los nodos de la Fig
 - `project-to-url`: Dado el id de un tablero trello, el id de una tarjeta trello en el tablero, la clave API y el token trello, devuelve los repositorios github vinculados a la tarjeta dada.
 
 Además de esto, también se ha desarrollado un chatbot para ayudar a los usuarios no técnicos a crear y describir los flujos de Node-RED (Puedes consultar la [<u>Integración OpenAI</u>](/docs/Tooling/openAI)).
-
-Si quieres probar estos nodos sin iniciar sesión en el sistema, puedes seguir la guía de instalación de [<u>Nodos STATUS</u>](/docs/Getting-started/nodeRED)

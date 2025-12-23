@@ -1,5 +1,15 @@
 ---
 sidebar_position: 1
+tags:
+  - getting-started
+  - introduction
+keywords:
+  - STATUS
+  - quick start
+  - onboarding
+  - system overview
+  - compliance management
+  - getting started
 ---
 
 # Introduction

@@ -1,3 +1,19 @@
+---
+sidebar_position: 1
+tags:
+  - arquitectura
+  - infraestructura
+  - despliegue
+keywords:
+  - arquitectura
+  - infraestructura
+  - microservicios
+  - despliegue
+  - Docker
+  - diseño del sistema
+  - arquitectura de red
+---
+
 # Arquitectura
 
 <div class="justified-text">

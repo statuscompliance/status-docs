@@ -1,3 +1,19 @@
+---
+sidebar_position: 2
+tags:
+  - herramientas
+  - integraciones
+  - ia
+keywords:
+  - OpenAI
+  - chatbot
+  - asistente
+  - IA
+  - herramientas
+  - integración
+  - configuración
+---
+
 # OpenAI
 
 Los usuarios con credenciales de acceso al editor node-RED podrán hacer uso de un chatbot implementado a través del [asistente OpenAi](https://platform.openai.com/docs/assistants/overview).

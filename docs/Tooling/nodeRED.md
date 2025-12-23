@@ -1,3 +1,19 @@
+---
+sidebar_position: 1
+tags:
+  - tools
+  - integrations
+  - workflow-automation
+keywords:
+  - Node-RED
+  - tools
+  - setup
+  - workflow
+  - automation
+  - integrations
+  - configuration
+---
+
 # Node-RED
 
 Node-RED is a visual programming platform based on Node.js that allows users to connect devices and web services intuitively through graphical workflows, facilitating the creation of IoT (Internet of Things) and automation applications. In the research project it will be used to design mashups capable of measuring compliance.
@@ -22,5 +38,3 @@ The operation of each of the nodes shown in Figure 1 is described below.
 - `project-to-url`: Given the id of a trello board, the id of a trello card in the board, the API key and the trello token, return the github repositories linked to the given card.
 
 In addition to this, a chatbot has also been developed to help non-technical users create and describe Node-RED flows (You can check the [<u>OpenAI integration</u>](/docs/Tooling/openAI)).
-
-If you want to test these nodes without logging into the system, you can follow the installation guide of [<u>STATUS nodes</u>](/docs/Getting-started/nodeRED)

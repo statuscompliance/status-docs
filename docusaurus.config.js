@@ -19,13 +19,21 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+      onBrokenMarkdownImages: "warn",
+    },
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "statuscompliance", // Usually your GitHub org/user name.
   projectName: "status-docs", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -67,31 +75,27 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
+      mermaid: {
+        theme: { light: 'neutral', dark: 'forest' },
+      },
       algolia: {
         // The application ID provided by Algolia
         appId: "IJZ96449HV",
-
         // Public API key: it is safe to commit it
-        apiKey: "08a7dc6df33b999f50361c3195df38de",
-
+        apiKey: "0b31969857df8ab34b7cad2867e6dfd5",
         indexName: "status-netlify",
-
         // Optional: see doc section below
-        contextualSearch: true,
-
-        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-        replaceSearchResultPathname: {
-          from: "/docs/", // or as RegExp: /\/docs\//
-          to: "/",
-        },
-
+        contextualSearch: false,
+        // Optional: Replace parts of item URLs from Algolia. Useful when using same search index for multiple deployments using a different baseUrl. You can use regexp or string in `from` param. For example: localhost:3000 vs myCompany.com/docs
+        // replaceSearchResultPathname: {
+        //   from: "/docs/", // or as RegExp: /\/docs\//
+        //   to: "/",
+        // },
         // Optional: Algolia search parameters
         searchParameters: {},
-
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
-
-        // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+        // Optional: whether insights feature is enabled or not on Docsearch (`false` by default)
         insights: false,
       },
       navbar: {

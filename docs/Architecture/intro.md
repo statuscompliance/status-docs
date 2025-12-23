@@ -1,3 +1,19 @@
+---
+sidebar_position: 1
+tags:
+  - architecture
+  - infrastructure
+  - deployment
+keywords:
+  - architecture
+  - infrastructure
+  - microservices
+  - deployment
+  - Docker
+  - system design
+  - network architecture
+---
+
 # Architecture
 
 <div class="justified-text">

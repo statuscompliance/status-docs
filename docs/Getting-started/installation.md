@@ -1,3 +1,20 @@
+---
+sidebar_position: 1
+tags:
+  - getting-started
+  - installation
+  - setup
+keywords:
+  - STATUS
+  - installation
+  - setup
+  - Docker
+  - Docker Compose
+  - getting started
+  - development
+  - deployment
+---
+
 # Installation
 
 ## ⚙ Running STATUS locally with Docker

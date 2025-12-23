@@ -1,3 +1,19 @@
+---
+sidebar_position: 3
+tags:
+  - herramientas
+  - integraciones
+  - automatización-flujos
+keywords:
+  - Bluejay
+  - herramientas
+  - integración
+  - flujos de trabajo
+  - automatización
+  - configuración
+  - gobernanza
+---
+
 # Infraestructura Bluejay
 
 Bluejay Infrastructure es una infraestructura basada en Governify que permite auditar equipos ágiles de forma sencilla. Está compuesta por un subconjunto de microservicios de Governify que pueden desplegarse tanto en una sola máquina como en un clúster. Bluejay accede a múltiples fuentes para recopilar información sobre los equipos de desarrollo, como GitLab, Jira, Slack, etc. y utiliza esta información para comprobar si dichos equipos están cumpliendo con un Acuerdo de Prácticas de Equipo (APT) que incluye métricas y garantías relacionadas con la metodología ágil.
