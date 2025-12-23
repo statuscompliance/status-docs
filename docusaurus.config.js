@@ -19,13 +19,21 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
+  // Habilitar Mermaid en Markdown
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "statuscompliance", // Usually your GitHub org/user name.
   projectName: "status-docs", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -67,6 +75,9 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
+      mermaid: {
+        theme: { light: 'neutral', dark: 'forest' },
+      },
       algolia: {
         // The application ID provided by Algolia
         appId: "IJZ96449HV",
